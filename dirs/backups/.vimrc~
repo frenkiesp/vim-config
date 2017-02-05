@@ -1,6 +1,17 @@
 " Configuration for VIM editor
 
-"""VUNDLE CONFIGURATION SETTINGS
+" Vundle auto installation
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+if !filereadable(vundle_readme)
+  echo "Installing Vundle.."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  let iCanHazVundle=0
+endif
+
+" Vundle configuration settings
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -13,10 +24,17 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+if iCanHazVundle == 0
+  echo "Installing Bundles, please ignore key map error messages"
+  echo ""
+  :PluginInstall
+endif
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " END - Setting up Vundle - the vim plugin bundler
 
+"===================================================================================================
 "INSERT PLUGINS AFTER THIS LINE
 
 "NERDTree file browser"
@@ -54,6 +72,11 @@ Plugin 'tpope/vim-fugitive'
 "Gundo
 Plugin 'sjl/gundo.vim'
 
+"Startify
+Plugin 'mhinz/vim-startify'
+
+"===================================================================================================
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -68,6 +91,13 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" Install plugins the first time vim runs
+if iCanHazVundle == 0
+    echo "Installing plugins, please ignore key map error messages"
+    echo ""
+    :PluginInstall
+endif
 
 "==================================================================================================
 " Vim settings and mappings
@@ -239,4 +269,4 @@ let g:airline#extensions#branch#enabled=1
 
 "Gundo ---------------------------------
 
-map <F2> :GundoToggle<CR>
+nmap <F2> :GundoToggle<CR>
