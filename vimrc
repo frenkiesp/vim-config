@@ -40,6 +40,9 @@ endif
 "NERDTree file browser"
 Plugin 'scrooloose/nerdtree'
 
+"NERD Comment"
+Plugin 'scrooloose/nerdcommenter'
+
 " Class/module browser
 Plugin 'majutsushi/tagbar'
 
@@ -74,6 +77,9 @@ Plugin 'sjl/gundo.vim'
 
 "Startify
 Plugin 'mhinz/vim-startify'
+
+"Sunset
+Plugin 'amdt/sunset'
 
 "===================================================================================================
 
@@ -272,4 +278,18 @@ let g:airline#extensions#branch#enabled=1
 nmap <F2> :GundoToggle<CR>
 
 "Startify ------------------------------
-g:startify_session_persistence = 1
+
+"Sunset --------------------------------
+" Automatically set background on local sunrise/sunset time
+let g:sunset_latitude = 46.48
+let g:sunset_longitude = 11.27
+
+" Daytime color scheme
+"function! Sunset_daytime_callback()
+"    set background=light
+"endfunction
+
+" Night color scheme
+"function! Sunset_nighttime_callback()
+"    set background=dark
+"endfunction
