@@ -182,6 +182,11 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+" Following three lines remove the auto copy function from VIM
+set guioptions-=a
+set guioptions-=A
+set guioptions-=aA
+
 "==================================================================================================
 "Plugin settings and mapping
 "==================================================================================================
