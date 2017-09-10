@@ -81,6 +81,10 @@ Plugin 'mhinz/vim-startify'
 "Sunset
 Plugin 'amdt/sunset'
 
+" Ctrlp
+Plugin 'ctrlpvim/ctrlp.vim'
+
+
 "===================================================================================================
 
 " All of your Plugins must be added before the following line
@@ -178,14 +182,10 @@ set mouse=a
 
 "Colors
 set t_Co=256
+let g:solarized_termcolors=256
 syntax enable
 set background=dark
 colorscheme solarized
-
-" Following three lines remove the auto copy function from VIM
-set guioptions-=a
-set guioptions-=A
-set guioptions-=aA
 
 "==================================================================================================
 "Plugin settings and mapping
