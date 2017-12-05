@@ -187,6 +187,9 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+"Escape delays
+set timeoutlen=10 ttimeoutlen=0
+
 "==================================================================================================
 "Plugin settings and mapping
 "==================================================================================================
@@ -207,17 +210,29 @@ autocmd BufEnter * lcd %:p:h
 
 " Syntastic ------------------------------
 
-" show list of errors and warnings on the current file
-nmap <leader>e :Errors<CR>
-" check also when just opened the file
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-" don't put icons on the sign column (it hides the vcs status icons of signify)
+let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 0
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_python_checkers = ['pyflakes']
 let g:syntastic_json_checkers=['jsonlint']
-let g:syntastic_enable_highlighting = 0
+let g:syntastic_enable_highlighting = 1
 autocmd BufNewFile,BufRead *.json set ft=javascript
+
+highlight SyntasticErrorLine guibg=#A00000
+
+" custom icons (enable them if you use a patched font, and enable the previous 
+" setting)
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
 
 "Intellisense
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -228,12 +243,6 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
-" custom icons (enable them if you use a patched font, and enable the previous 
-" setting)
-"let g:syntastic_error_symbol = '✗'
-"let g:syntastic_warning_symbol = '⚠'
-"let g:syntastic_style_error_symbol = '✗'
-"let g:syntastic_style_warning_symbol = '⚠'
 
 " Python-mode ------------------------------
 
@@ -280,8 +289,6 @@ let g:airline#extensions#branch#enabled=1
 
 "Gundo ---------------------------------
 
-nmap <F2> :GundoToggle<CR>
-
 "Startify ------------------------------
 
 "Sunset --------------------------------
@@ -298,3 +305,6 @@ let g:sunset_longitude = 11.27
 "function! Sunset_nighttime_callback()
 "    set background=dark
 "endfunction
+
+"CntrlP
+nmap <F2> :CtrlP<CR>
