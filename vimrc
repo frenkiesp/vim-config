@@ -84,6 +84,9 @@ Plugin 'amdt/sunset'
 " Ctrlp
 Plugin 'ctrlpvim/ctrlp.vim'
 
+" YouCompleteme
+Plugin 'valloric/youcompleteme'
+
 
 "===================================================================================================
 
